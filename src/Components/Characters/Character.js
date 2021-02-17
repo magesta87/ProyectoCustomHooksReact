@@ -1,4 +1,5 @@
 import { Col, Card, Button } from "react-bootstrap";
+import {SpinnerRoundOutlined, SpinnerInfinity} from 'spinners-react'
 
 const Character = ({image, name, gender, status, species, created}) => {
   return (
@@ -9,12 +10,16 @@ const Character = ({image, name, gender, status, species, created}) => {
           <Card.Title>
             {name} - {gender}
           </Card.Title>
-          <Card.Text>
-            <p>
-              {status} - {species}
-            </p>
-            <small>{created}</small>
-          </Card.Text>
+            <Card.Text>
+              <p>
+              {status === "Alive" || status === "Dead" ? ( 
+              <SpinnerRoundOutlined color={status === "Alive" ? "#38ad48" : "red"}/>) : (
+              <SpinnerInfinity color={"#38ad48"}/>)  
+              } {status} - {species}
+                
+
+              </p> 
+            </Card.Text>  
           <Button type={"button"} variant={"primary"} block>
             Ver màs
           </Button>
